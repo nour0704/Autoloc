@@ -6,10 +6,8 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-
-
-import java.math.BigDecimal;
 import java.time.LocalDate;
+import java.util.*;
 
 @Entity
 @Table(name = "client")
@@ -21,12 +19,13 @@ public class Client {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long idClient;
-    private LocalDate dateSignature;
     private String nom;
     private String prenom;
     private String email;
     private String telephone;
-    private String numPermis ;
+    private String numPermis;
     private LocalDate dateInscription;
 
+    @OneToMany(mappedBy = "client")
+    private Set<Reservation> reservations;
 }

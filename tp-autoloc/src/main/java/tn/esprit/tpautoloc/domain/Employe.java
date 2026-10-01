@@ -7,8 +7,8 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 import tn.esprit.tpautoloc.domain.enums.RoleEmploye;
 
+import java.util.*;
 
-import java.math.BigDecimal;
 @Entity
 @Table(name = "employe")
 @Getter
@@ -21,5 +21,10 @@ public class Employe {
     private Long idEmploye;
     private String nom;
     private String prenom;
+
+    @Enumerated(EnumType.STRING)
     private RoleEmploye role;
+
+    @ManyToOne
+    private Agence agence;
 }

@@ -7,13 +7,11 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 import tn.esprit.tpautoloc.domain.enums.StatutReservation;
 
-
-import java.math.BigDecimal;
 import java.time.LocalDate;
-import java.util.Date;
+import java.util.*;
 
 @Entity
-@Table(name = "Reservation")
+@Table(name = "reservation")
 @Getter
 @Setter
 @NoArgsConstructor
@@ -24,6 +22,16 @@ public class Reservation {
     private Long idReservation;
     private LocalDate dateDebut;
     private LocalDate dateFin;
+
+    @Enumerated(EnumType.STRING)
     private StatutReservation statut;
 
+    @ManyToOne
+    private Client client;
+
+    @ManyToOne
+    private Vehicule vehicule;
+
+    @OneToOne
+    private Contrat contrat;
 }

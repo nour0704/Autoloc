@@ -6,9 +6,8 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-
-import java.math.BigDecimal;
 import java.time.LocalDate;
+import java.util.*;
 
 @Entity
 @Table(name = "maintenance")
@@ -16,11 +15,14 @@ import java.time.LocalDate;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-public class Maintenance{
+public class Maintenance {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-   private Long idMainteannce;
+    private Long idMaintenance;
     private LocalDate dateDebut;
     private LocalDate dateFin;
-    private String descriptino;
+    private String description;
+
+    @ManyToOne
+    private Vehicule vehicule;
 }
