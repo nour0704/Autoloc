@@ -5,6 +5,7 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import lombok.ToString;
 import tn.esprit.tpautoloc.domain.enums.ModePaiement;
 
 import java.math.BigDecimal;
@@ -17,6 +18,7 @@ import java.util.*;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
+@ToString(exclude = "contrat")
 public class Paiement {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

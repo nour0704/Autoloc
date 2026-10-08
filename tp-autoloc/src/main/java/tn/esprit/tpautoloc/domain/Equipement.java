@@ -5,6 +5,7 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import lombok.ToString;
 
 import java.util.*;
 
@@ -14,6 +15,7 @@ import java.util.*;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
+@ToString(exclude = "vehicules")
 public class Equipement {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

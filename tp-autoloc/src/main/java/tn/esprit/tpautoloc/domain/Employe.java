@@ -5,6 +5,7 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import lombok.ToString;
 import tn.esprit.tpautoloc.domain.enums.RoleEmploye;
 
 import java.util.*;
@@ -15,6 +16,7 @@ import java.util.*;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
+@ToString(exclude = "agence")
 public class Employe {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

@@ -5,6 +5,7 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import lombok.ToString;
 
 import java.time.LocalDate;
 import java.util.*;
@@ -15,6 +16,7 @@ import java.util.*;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
+@ToString(exclude = "vehicule")
 public class Maintenance {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
