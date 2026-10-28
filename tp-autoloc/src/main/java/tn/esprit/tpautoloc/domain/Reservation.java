@@ -1,11 +1,7 @@
 package tn.esprit.tpautoloc.domain;
 
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
-import lombok.ToString;
+import lombok.*;
 import tn.esprit.tpautoloc.domain.enums.StatutReservation;
 
 import java.time.LocalDate;
@@ -17,6 +13,7 @@ import java.util.*;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
+@Builder
 @ToString(exclude = {"client", "vehicule", "contrat"})
 public class Reservation {
     @Id
@@ -36,4 +33,49 @@ public class Reservation {
 
     @OneToOne
     private Contrat contrat;
+
+    /**
+     * Alias getter pour compatibilité avec le sujet de l'Atelier 6
+     */
+    public Long getId() {
+        return idReservation;
+    }
+
+    public void setId(Long id) {
+        this.idReservation = id;
+    }
+
+    public void setStatut(StatutReservation statut) {
+        this.statut = statut;
+    }
+
+    public void setStatut(String statutStr) {
+        if (statutStr != null) {
+            try {
+                this.statut = StatutReservation.valueOf(statutStr);
+            } catch (IllegalArgumentException e) {
+                this.statut = null;
+            }
+        } else {
+            this.statut = null;
+        }
+    }
+
+    public static class ReservationBuilder {
+        public ReservationBuilder statut(String statutStr) {
+            if (statutStr != null) {
+                try {
+                    this.statut = StatutReservation.valueOf(statutStr);
+                } catch (IllegalArgumentException e) {
+                    this.statut = null;
+                }
+            }
+            return this;
+        }
+
+        public ReservationBuilder statut(StatutReservation statut) {
+            this.statut = statut;
+            return this;
+        }
+    }
 }
