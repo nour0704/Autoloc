@@ -1,5 +1,6 @@
 package tn.esprit.tpautoloc.domain;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -30,5 +31,6 @@ public class Paiement {
     private ModePaiement modePaiement;
 
     @ManyToOne
+    @JsonBackReference("contrat-paiements")
     private Contrat contrat;
 }
